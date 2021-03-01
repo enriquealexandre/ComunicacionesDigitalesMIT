@@ -10,8 +10,8 @@ function imagenJPEG = jpegCod(x)
 %
 % Salida:
 %  - imagenJPEG: La imagen codificada, sin utilizar codificación entrópica.
-
-
+%
+% Requiere tener instalada la Toolbox de Image Processing
 
 %Para poder trabajar más cómodo, convierto la imagen a formato 'double'.
 if ~isa(x,'double')
@@ -28,17 +28,9 @@ Q = [ 16 11 10 16 24 40 51 61;
      49 64 78 87 103 121 120 101;
      72 92 95 98 112 100 103 99];
  
-%Voy reservando espacio para la imagen codificada
-imagenJPEG = zeros(size(x));
+%Hago la DCT de la imagen en bloques de 8x8
+imagenDCT = blockproc(x, [8 8], @(block_struct) dct2(block_struct.data));
 
-
-%Proceso de codificación por bloques 8x8
-for i=1:8:size(x,1)
-    for j=1:8:size(x,2)
-        bloque = x(i:i+7, j:j+7);           % Cojo el bloque
-        DCTbloque = dct2(bloque);           % Calculo la DCT
-        bloqueQ = round(DCTbloque./Q);      % Cuantifico
-        imagenJPEG(i:i+7,j:j+7) = bloqueQ;  % Lo paso a la imagen global
-    end
-end
-
+%Cuantifico cada bloque utilizando la matriz de cuantificación
+imagenJPEG = blockproc(imagenDCT, [8 8], @(block_struct) round(block_struct.data./Q));
+ 

@@ -9,6 +9,8 @@ function y = jpegDec(imagenJPEG)
 %
 % Salida:
 %  - y: La imagen reconstruida.
+%
+% Requiere tener instalada la Toolbox de Image Processing
 
 
 %Matriz de cuantificación (es la misma que en el codificador
@@ -22,19 +24,11 @@ Q = [ 16 11 10 16 24 40 51 61;
      72 92 95 98 112 100 103 99];
  
 
-%Reservo espacio para la imagen de salida
-y = zeros(size(imagenJPEG));
+%Decuantifico cada bloque utilizando la matriz de cuantificación
+imagenIQ = blockproc(imagenJPEG, [8 8], @(block_struct) (block_struct.data.*Q));
 
-%Proceso de decodificación (bloques 8x8)
-for i=1:8:size(imagenJPEG,1)
-    for j=1:8:size(imagenJPEG,2)
-        bloque = imagenJPEG(i:i+7, j:j+7);  %Cojo el bloque
-        bloqueIQ = bloque.*Q;               %Cuantificación inversa
-        IDCTbloque = idct2(bloqueIQ);       %IDCT  
-        y(i:i+7,j:j+7) = IDCTbloque;        %Lo paso a la imagen global
-    end
-end
-
+%Hago la IDCT de la imagen en bloques de 8x8
+y = blockproc(imagenIQ, [8 8], @(block_struct) idct2(block_struct.data));
 %Por compatibilidad, vuelvo al formato uint8. 
 y = uint8(y);   
 
