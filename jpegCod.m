@@ -14,9 +14,8 @@ function imagenJPEG = jpegCod(x)
 % Requiere tener instalada la Toolbox de Image Processing
 
 %Para poder trabajar más cómodo, convierto la imagen a formato 'double'.
-if ~isa(x,'double')
-    x = double(x);
-end
+x = double(x)-128;
+
 
 %Matriz de cuantificación JPEG
 Q = [ 16 11 10 16 24 40 51 61;
