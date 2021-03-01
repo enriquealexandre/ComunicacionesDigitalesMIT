@@ -28,10 +28,3 @@ for i=1:8:size(x,1)
     end
 end
 
-
-maximo = 8*size(x,1)*size(x,2);
-unicos = unique(imagenJPEG);
-pixeles = size(x,1)*size(x,2);
-for k=1:length(unicos)
-    contador(k) = length(find(imagenJPEG==unicos(k)));
-end
