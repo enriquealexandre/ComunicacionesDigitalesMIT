@@ -1,2 +1,3 @@
 # Comunicaciones Digitales
-Código de ejemplos para la asignatura Comunicaciones Digitales
+
+Material para la asignatura de Comunicaciones Digitales
