@@ -1,4 +1,4 @@
 *.graffle
 *.fig
 *.eps
-.DS_STORE
+.DS*
