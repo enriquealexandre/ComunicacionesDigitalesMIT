@@ -1,33 +1,16 @@
 \documentclass[es,apuntes]{uah}
 
-\usepackage{graphicx}	%Este las figuritas
-\usepackage{color}					  %Tampoco lo se, pero no sobra
-\usepackage{subfigure}				%Para crear subfiguras
-\usepackage{amsfonts}					%Para poder poner ciertos símbolos matemticos
+\usepackage{subfigure}
 \usepackage{amssymb}
-\usepackage{colortbl}					%Para darle colorines a las tablas
-\usepackage{indentfirst}
-\usepackage{cite}      % Written by Donald Arseneau
-\usepackage{helvet}
-\usepackage{mathrsfs}
-\usepackage{amsmath}
-\usepackage{makeidx}
-\usepackage{hyperref}
 
 \tema{2}
-\tituloes{Codificación de canal}
-\tituloen{Lesson title}
+\titulo{Codificación de canal}{Lesson title}
 %
 \begin{document}
 
 \titulacion{Optativa GIEC y GIT}
-\asignatura{Comunicaciones Digitales}
-\departamento{Teoría de la Señal y Comunicaciones}
+\asignatura{Comunicaciones Digitales}{}
 \curso{2020/2021} % Do not show year
-\profesor{}
-\tel{}
-\mail{} % Do not show email
-\date{} % Do not show date
 
 \maketitle
 
@@ -1023,6 +1006,7 @@ Por último, en la figura \ref{fig:Viterbi_5} se muestra el estado final del alg
 		
 
 		\textsc{Nota}: Considere que $P(i,n) \approx \left ( \begin{array}{c}n \\i \end{array} \right ) \cdot p_e^i$
+
 		}
 		{
 		\begin{enumerate}
@@ -1033,16 +1017,27 @@ Por último, en la figura \ref{fig:Viterbi_5} se muestra el estado final del alg
 			\item $p = 10^{-15}$
 			\item $p \approx 10^{-8}$
 		\end{enumerate}
+
 		}
-		{}{}	
+		{
+
+		}{
+
+		}	
 	
 	\Problema{
 		Calcule la distancia Hamming entre la palabra \bits{0100101} y las siguientes palabras: \bits{0111111}, \bits{1010111} y \bits{1101000}.
+
 		}
 		{
 		3, 4 y 4 respectivamente.\\
+
 		}
-		{}{}
+		{
+
+		}{
+
+		}
 
 	\Problema{Calcule la probabilidad de que una palabra tenga a) errores detectados b) errores no detectados y c) no tenga errores cuando usamos un código de paridad con $n=4$ y $p_e=0.1$.
 
@@ -1200,9 +1195,12 @@ Por último, en la figura \ref{fig:Viterbi_5} se muestra el estado final del alg
 	\end{array}
 \end{displaymath}
 
-	 Obtenga, mediante el algoritmo de Viterbi, la secuencia decodificada siendo ahora la secuencia recibida: \bits{10\,10\,10\,01\,01\,01\,01\,11}.
+	 Obtenga, mediante el algoritmo de Viterbi, la secuencia decodificada siendo ahora la secuencia recibida: \\
+	 \bits{10\,10\,10\,01\,01\,01\,01\,11}.
+	 
 	 }
-	 {\bits{11 10 10 00 01 00 01 11}\\}{}{}
+	 {
+		 \bits{11 10 10 00 01 00 01 11}\\}{}{}
 	
 	
 	
