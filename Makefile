@@ -5,17 +5,16 @@ DIRS=$$(ls -d **/*/)
 .PHONY: clean all
 
 Apuntes:
-	cd ./Tema_1/Apuntes ; $(TEX) -jobname=Apuntes "\input{Apuntes.tex}" > Apuntes.log ; cd ../..
-	cd ./Tema_2/Apuntes ; $(TEX) -jobname=Apuntes "\input{Apuntes.tex}" > Apuntes.log ; cd ../..
-	cd ./Tema_3/Apuntes ; $(TEX) -jobname=Apuntes "\input{Apuntes.tex}" > Apuntes.log ; cd ../..
+	cd ./1_TeoriaInformacion/Apuntes ; $(TEX) -jobname=Apuntes "\input{Apuntes.tex}" > Apuntes.log ; cd ../..
+	cd ./2_CodificadoresCanal/Apuntes ; $(TEX) -jobname=Apuntes "\input{Apuntes.tex}" > Apuntes.log ; cd ../..
+	cd ./3_AccesoMedio/Apuntes ; $(TEX) -jobname=Apuntes "\input{Apuntes.tex}" > Apuntes.log ; cd ../..
 
 Practicas:
-	cd ./Tema_1/Práctica ; $(TEX) -jobname=Práctica "\input{Práctica.tex}" > Práctica.log ; cd ../..
-	cd ./Tema_2/Práctica ; $(TEX) -jobname=Práctica "\input{Práctica.tex}" > Práctica.log ; cd ../..
-	cd ./Tema_3/Práctica ; $(TEX) -jobname=Práctica "\input{Práctica.tex}" > Práctica.log ; cd ../..
+	cd ./1_TeoriaInformacion/Práctica ; $(TEX) -jobname=Práctica "\input{Práctica.tex}" > Práctica.log ; cd ../..
+	cd ./2_CodificadoresCanal/Práctica ; $(TEX) -jobname=Práctica "\input{Práctica.tex}" > Práctica.log ; cd ../..
 
 Bibliografia:
-	cd ./Bibliografía ; $(TEX) -jobname=Bibliografía "\input{Bibliografía.tex}" > Bibliografía.log ; cd ..
+	cd ./4_Bibliografia ; $(TEX) -jobname=Bibliografía "\input{Bibliografía.tex}" > Bibliografía.log ; cd ..
 
 all: Apuntes Practicas Bibliografia
 
