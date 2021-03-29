@@ -12,6 +12,7 @@ Apuntes:
 Practicas:
 	cd ./1_TeoriaInformacion/Práctica ; $(TEX) -jobname=Práctica "\input{Práctica.tex}" > Práctica.log ; cd ../..
 	cd ./2_CodificadoresCanal/Práctica ; $(TEX) -jobname=Práctica "\input{Práctica.tex}" > Práctica.log ; cd ../..
+	cd ./3_AccesoMedio/Práctica ; $(TEX) -jobname=Práctica "\input{Práctica.tex}" > Práctica.log ; cd ../..
 
 Bibliografia:
 	cd ./4_Bibliografia ; $(TEX) -jobname=Bibliografía "\input{Bibliografía.tex}" > Bibliografía.log ; cd ..
