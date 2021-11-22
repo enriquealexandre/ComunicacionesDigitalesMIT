@@ -5,10 +5,11 @@
 %
 \begin{document}
 
-\titulacion{Optativa GIEC y GIT}
+%\titulacion{Optativa GIEC y GIT}
+\titulacion{Máster en Ingeniería de Telecomunicación}
 \departamento{Teoría de la Señal y Comunicaciones}
 \asignatura{Comunicaciones Digitales}{}
-\curso{2020/2021} 
+\curso{2021/2022} 
 
 \maketitle
 
@@ -16,7 +17,7 @@
 
 El objetivo de esta práctica es hacer una pequeña simulación de un sistema de comunicaciones que utilice como técnica de acceso al medio un sistema CDMA, y en particular técnicas de secuencia directa (DS). 
 
-El proceso es muy sencillo. En primer lugar hay que generar una señal $x(t)$ que contendrá la información a transmitir, de la forma:
+La idea es muy sencilla. Partiremos de una señal $x(t)$ que contendrá la información a transmitir, de la forma:
 
 \begin{equation}
 	x(t) = \sum_{n=-\infty}^{\infty} a_n h_T(t - nT_b)
@@ -39,7 +40,7 @@ En la siguiente figura (extraída de los apuntes) podéis ver de forma gráfica 
 \end{figure*}
 
 
-La señal resultante de multiplicar $x(t)$ por $c(t)$ será nuestra señal de espectro ensanchado. Para recuperar la señal original basta con volver a multiplicar esta señal por el mismo código utilizado en la transmisión. Una opción para hacer esto es utilizar en Matlab la función \emph{rng}, que permite fijar la semilla del generador de números aleatorios, de forma que se genere exactamente la misma secuencia en transmisor y receptor. Basta así con que el receptor utilice la misma semilla que el transmisor para que estén sincronizados. 
+La señal resultante de multiplicar $x(t)$ por $c(t)$ será nuestra señal de espectro ensanchado. Para recuperar la señal original basta con volver a multiplicar esta señal por el mismo código utilizado en la transmisión. 
 
 A partir de este esquema, realizaremos las siguientes pruebas:
 
