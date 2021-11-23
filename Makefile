@@ -20,7 +20,7 @@ Transparencias:
 Bibliografia:
 	cd ./4_Bibliografia ; $(TEX) -jobname=Bibliografía "\input{Bibliografía.tex}" > Bibliografía.log ; cd ..
 
-all: Apuntes Practicas Bibliografia Transparencias
+all: Apuntes Bibliografia Transparencias
 
 clean:
 	cd ./1_TeoriaInformacion/Apuntes ; rm -f aux.tex *.out *aux *bbl *blg *log *toc *.ptb *.tod *.fls *.fdb_latexmk *.lof *.nav *.snm *.vrb *.dvi *.synctex.gz; cd ../..
@@ -28,9 +28,9 @@ clean:
 	cd ./3_AccesoMedio/Apuntes ; rm -f aux.tex *.out *aux *bbl *blg *log *toc *.ptb *.tod *.fls *.fdb_latexmk *.lof *.nav *.snm *.vrb *.dvi *.synctex.gz; cd ../..
 	cd ./2_CodificadoresCanal/Transparencias ; rm -f aux.tex *.out *aux *bbl *blg *log *toc *.ptb *.tod *.fls *.fdb_latexmk *.lof *.nav *.snm *.vrb *.dvi *.synctex.gz; cd ../..
 	cd ./3_AccesoMedio/Transparencias ; rm -f aux.tex *.out *aux *bbl *blg *log *toc *.ptb *.tod *.fls *.fdb_latexmk *.lof *.nav *.snm *.vrb *.dvi *.synctex.gz; cd ../..
-	cd ./1_TeoriaInformacion/Práctica ; rm -f aux.tex *.out *aux *bbl *blg *log *toc *.ptb *.tod *.fls *.fdb_latexmk *.lof *.nav *.snm *.vrb *.dvi *.synctex.gz; cd ../..
-	cd ./2_CodificadoresCanal/Práctica ; rm -f aux.tex *.out *aux *bbl *blg *log *toc *.ptb *.tod *.fls *.fdb_latexmk *.lof *.nav *.snm *.vrb *.dvi *.synctex.gz; cd ../..
-	cd ./3_AccesoMedio/Práctica ; rm -f aux.tex *.out *aux *bbl *blg *log *toc *.ptb *.tod *.fls *.fdb_latexmk *.lof *.nav *.snm *.vrb *.dvi *.synctex.gz; cd ../..
+#	cd ./1_TeoriaInformacion/Práctica ; rm -f aux.tex *.out *aux *bbl *blg *log *toc *.ptb *.tod *.fls *.fdb_latexmk *.lof *.nav *.snm *.vrb *.dvi *.synctex.gz; cd ../..
+#	cd ./2_CodificadoresCanal/Práctica ; rm -f aux.tex *.out *aux *bbl *blg *log *toc *.ptb *.tod *.fls *.fdb_latexmk *.lof *.nav *.snm *.vrb *.dvi *.synctex.gz; cd ../..
+#	cd ./3_AccesoMedio/Práctica ; rm -f aux.tex *.out *aux *bbl *blg *log *toc *.ptb *.tod *.fls *.fdb_latexmk *.lof *.nav *.snm *.vrb *.dvi *.synctex.gz; cd ../..
 	cd ./4_Bibliografia ; rm -f aux.tex *.out *aux *.idx *bbl *blg *log *toc *.ptb *.tod *.fls *.fdb_latexmk *.lof *.nav *.snm *.vrb *.dvi *.synctex.gz; cd ..
 
 	
