@@ -14,9 +14,9 @@ from collections import Counter
 #   datos: datos de entrada
 # SALIDA:
 #   H: Valor de la entropía (Float) 
-def entropia(datos) -> float:
-    diccionario = gen_huffman_dic(datos)
-    p = list(diccionario.values())
+def entropia(datos):
+    probabilidades,codigos = gen_huffman_dic(datos)
+    p = list(probabilidades.values())
     H = sum([-k*np.log2(k) for k in p])
     return H
 
@@ -29,25 +29,15 @@ def entropia(datos) -> float:
 #   datos: Los datos de entrada que se quieren codificar
 # SALIDA:
 #   diccionario: Diccionario para la codificación, con pares símbolos/probabilidades 
-def gen_huffman_dic(datos) -> dict:
+#   codigo: Diccionario para la codificación, con pares símbolos/código binario {Dict, String:String}
+
+def gen_huffman_dic(datos):
     if type(datos) == np.ndarray:
         datos = np.ravel(datos)
     diccionario = dict(Counter(list(datos)))
     N = len(datos)
     for k in diccionario.keys():
         diccionario[k] /= N
-    return diccionario
-
-# FUNCIÓN:
-#   huffman(diccionario)
-# DESCRIPCIÓN:
-#   Genera un diccionario para la codificación Huffman tal y como se explica en los apuntes. 
-#   El diccionario de salida incluye pares símbolo/código
-# ENTRADA:
-#   diccionario: Diccionario con los pares símbolos/probabilidades {Dict, String:Float}
-# SALIDA:
-#   codigo: Diccionario para la codificación, con pares símbolos/código binario {Dict, String:String}
-def huffman(diccionario): 
     heap = [[p, [caracter, '']] for caracter, p in diccionario.items()]
     heapq.heapify(heap)
     while len(heap) > 1:
@@ -58,9 +48,10 @@ def huffman(diccionario):
         for pair in hi[1:]:
             pair[1] = '1' + pair[1]
         heapq.heappush(heap, [lo[0] + hi[0]] + lo[1:] + hi[1:])
-    codigo = sorted(heapq.heappop(heap)[1:], key=lambda p: (len(p[-1]), p))
-    codigo = dict(codigo)
-    return codigo
+    codigos = sorted(heapq.heappop(heap)[1:], key=lambda p: (len(p[-1]), p))
+    codigos = dict(codigos)
+    return diccionario, codigos
+
 
 # FUNCIÓN:
 #   huffman_cod(mensaje,diccionario)
@@ -68,14 +59,14 @@ def huffman(diccionario):
 #   Realiza la codificación Huffman de un mensaje dado un diccionario. 
 # ENTRADAS:
 #   mensaje: Mensaje a codificar (string)
-#   diccionario: Diccionario de pares símbolos/probabilidades {Dict string:float}
+#   codigos: Diccionario de pares símbolos/código {Dict string:float}
 # SALIDA:
 #   bits: Mensaje codificado en binario (string)
-def huffman_cod(mensaje,diccionario):
-    codigo = huffman(diccionario)
+def huffman_cod(mensaje,codigos):
+    #codigo = huffman(diccionario)
     bits = ""
     for letra in mensaje:
-        bits += codigo[letra]
+        bits += codigos[letra]
     return bits
 
 # FUNCIÓN:
@@ -87,11 +78,10 @@ def huffman_cod(mensaje,diccionario):
 #   diccionario: Diccionario de pares símbolos/probabilidades {Dict string:float}
 # SALIDA:
 #   salida: Mensaje decodificado (string)
-def huffman_dec(bits, diccionario):
+def huffman_dec(bits, codigos):
     busca = ""
     salida = []
-    codigo = huffman(diccionario)
-    codigo_dec = {v: k for k, v in codigo.items()}
+    codigo_dec = {v: k for k, v in codigos.items()}
     for k in bits:
         busca += k
         if busca in codigo_dec:
@@ -108,7 +98,7 @@ def huffman_dec(bits, diccionario):
 #   datos: Datos a procesar
 # SALIDAS:
 #   diccionario: Diccionario para la codificación LZW
-def gen_lzw_dic(datos) -> dict:
+def gen_lzw_dic(datos):
     if type(datos) == np.ndarray:
         datos = np.ravel(datos)
     diccionario = dict(Counter(list(datos)))
