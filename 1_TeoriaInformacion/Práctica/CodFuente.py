@@ -5,7 +5,7 @@ import numpy as np  #Librería matemática
 import heapq        #Librería para crear pilas (la utilizamos para generar el árbol de Huffman)
 from collections import Counter
 
-
+##########################################################################
 # FUNCIÓN:
 #   entropia(datos)
 # DESCRIPCIÓN:
@@ -14,12 +14,21 @@ from collections import Counter
 #   datos: datos de entrada
 # SALIDA:
 #   H: Valor de la entropía (Float) 
+##########################################################################
 def entropia(datos):
     probabilidades,codigos = gen_huffman_dic(datos)
     p = list(probabilidades.values())
     H = sum([-k*np.log2(k) for k in p])
     return H
 
+
+########################
+########################
+# CODIFICACIÓN HUFFMAN #
+########################
+########################
+
+##########################################################################
 # FUNCIÓN:
 #   gen_huffman_dic(datos)
 # DESCRIPCIÓN:
@@ -28,9 +37,11 @@ def entropia(datos):
 # ENTRADA:
 #   datos: Los datos de entrada que se quieren codificar
 # SALIDA:
-#   diccionario: Diccionario para la codificación, con pares símbolos/probabilidades 
-#   codigo: Diccionario para la codificación, con pares símbolos/código binario {Dict, String:String}
-
+#   diccionario: Diccionario para la codificación, con pares 
+#       símbolos/probabilidades 
+#   codigo: Diccionario para la codificación, con pares símbolos/código 
+#       binario {Dict, String:String}
+##########################################################################
 def gen_huffman_dic(datos):
     if type(datos) == np.ndarray:
         datos = np.ravel(datos)
@@ -52,7 +63,7 @@ def gen_huffman_dic(datos):
     codigos = dict(codigos)
     return diccionario, codigos
 
-
+##########################################################################
 # FUNCIÓN:
 #   huffman_cod(mensaje,diccionario)
 # DESCRIPCIÓN:
@@ -62,22 +73,25 @@ def gen_huffman_dic(datos):
 #   codigos: Diccionario de pares símbolos/código {Dict string:float}
 # SALIDA:
 #   bits: Mensaje codificado en binario (string)
+##########################################################################
 def huffman_cod(mensaje,codigos):
-    #codigo = huffman(diccionario)
     bits = ""
     for letra in mensaje:
         bits += codigos[letra]
     return bits
 
-# FUNCIÓN:
+##########################################################################
+# # FUNCIÓN:
 #   huffman_dec(bits, diccionario)
 # DESCRIPCIÓN:
-#   Realiza la decodificación Huffman dado un mensaje binario y el diccionario.
+#   Realiza la decodificación Huffman dado un mensaje binario y el 
+#       diccionario.
 # ENTRADAS:
-#   bits: Mensaje binario a decodificar (string)
-#   diccionario: Diccionario de pares símbolos/probabilidades {Dict string:float}
+#   bits: Mensaje binario a decodificar 
+#   diccionario: Diccionario de pares símbolos/probabilidades 
 # SALIDA:
-#   salida: Mensaje decodificado (string)
+#   salida: Mensaje decodificado 
+##########################################################################
 def huffman_dec(bits, codigos):
     busca = ""
     salida = []
@@ -90,6 +104,13 @@ def huffman_dec(bits, codigos):
     return salida
 
 
+####################
+####################
+# CODIFICACIÓN LZW #
+####################
+####################
+
+##########################################################################
 # FUNCIÓN:
 #   gen_lzw_dic(datos)
 # DESCRIPCIÓN:
@@ -98,6 +119,7 @@ def huffman_dec(bits, codigos):
 #   datos: Datos a procesar
 # SALIDAS:
 #   diccionario: Diccionario para la codificación LZW
+##########################################################################
 def gen_lzw_dic(datos):
     if type(datos) == np.ndarray:
         datos = np.ravel(datos)
@@ -108,12 +130,12 @@ def gen_lzw_dic(datos):
         n+=1
     return diccionario
 
-
-
+##########################################################################
 # FUNCIÓN:
 #   lzw_cod(cadena, diccionario)
 # DESCRIPCIÓN:
-#   Realiza la codificación LZW (Lempel–Ziv–Welch) de una cadena de texto dado el diccionario
+#   Realiza la codificación LZW (Lempel–Ziv–Welch) de una cadena de texto 
+#       dado el diccionario
 # ENTRADAS:
 #   cadena: Mensaje a codificar (string)
 #   diccionario: Diccionario inicial con símbolos/códigos {Dict string:Int}
@@ -121,6 +143,7 @@ def gen_lzw_dic(datos):
 #   codigobinario: Mensaje codificado [string]
 #   bitspormuestra: Número de bits que ocupa cada muestra del código [Int]
 #   codigo: Códigos del diccionario correspondientes al mensaje
+##########################################################################
 def lzw_cod(cadena, diccionario):
     C = cadena[0]
     i=1
@@ -141,16 +164,19 @@ def lzw_cod(cadena, diccionario):
         codigobinario += bin(k)[2:].zfill(bitspormuestra)
     return codigobinario, bitspormuestra, codigo
 
+##########################################################################
 # FUNCIÓN:
 #   lzw_dec(codigo, diccionario)
 # DESCRIPCIÓN:
-#   Realiza la decodificación LZW (Lempel–Ziv–Welch) dado un código de entrada y el diccionario.
+#   Realiza la decodificación LZW (Lempel–Ziv–Welch) dado un código de 
+#       entrada y el diccionario.
 # ENTRADAS:
 #   codigobinario: Código a decodificar [List Int]
 #   bitspormuestra: Número de bits que ocupa cada muestra [Int]
 #   diccionario: Diccionario de pares símbolos/códigos {Dict char:Int}
 # SALIDA:
 #   mensaje: Mensaje decodificado (String)
+##########################################################################
 def lzw_dec(codigobinario, bitspormuestra, diccionario):
     codigo = []
     for i in range(0,len(codigobinario),bitspormuestra):

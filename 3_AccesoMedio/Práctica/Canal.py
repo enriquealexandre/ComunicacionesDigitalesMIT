@@ -1,6 +1,3 @@
-#########
-# CANALES
-#########
 import numpy as np
 
 #Canal AWGN (Additive White Gaussian Noise)
