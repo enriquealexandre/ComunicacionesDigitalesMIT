@@ -26,7 +26,6 @@ def numErrores(entrada, salida):
 #########################
 #########################
 
-
 ##########################################################################
 # FUNCIÓN:
 #   repeticion_cod(bits_in,k)
@@ -75,7 +74,6 @@ def repeticion_dec(bits_in,k):
 ######################
 ######################
 
-
 ##########################################################################
 # FUNCIÓN:
 #   paridad_cod(bits_in,n)
@@ -99,7 +97,6 @@ def paridad_cod(bits_in,n):
             x.insert(i+n-1,1)
     bits_out = "".join([str(k) for k in x])
     return bits_out
-
 
 ##########################################################################
 # FUNCIÓN:
@@ -146,7 +143,6 @@ def erroresParidad(bits_in, bits_out,n):
         if errores > 0:
             erroresReales += 1
     return erroresReales
-
 
 
 ###################
