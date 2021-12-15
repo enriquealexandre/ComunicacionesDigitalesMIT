@@ -266,7 +266,7 @@ La técnica SDMA segmenta el espacio en distintos sectores dentro de cada uno de
 
 
 
-\Problema{
+\ProblemaBoletin{
 	Se pretende diseñar un sistema FDMA para $10$ usuarios de forma que a cada uno de ellos se le asigne un canal de ancho de banda $W$. Se debe considerar además una banda de guarda entre canales $B_g$. Considerando que el módulo de la respuesta en frecuencia de los filtros paso banda viene dado por:
 		\begin{displaymath}
 			|H(f)| = e^{-\left ( 1.2 \frac{f-f_0}{W} \right )^2 }
@@ -274,16 +274,18 @@ La técnica SDMA segmenta el espacio en distintos sectores dentro de cada uno de
 		donde $f_0$ es la frecuencia central de cada uno de los canales. 
 		Calcule el valor de $B_g$ de forma que se garantice que la respuesta entre canales adyacentes cumpla $|H(f) \leq 0.1$
 		¿Cuál sería el ancho de banda global de todo el sistema FDMA?
+
 	}
 	{$B_g = 0.76 W$, $B=17W$.}{}{}
 
-\Problema{
+\ProblemaBoletin{
 	Un sistema CDMA tiene $P_e = 10^{-7}$ y $P_g = 30dB$. ¿Cuántos usuarios adicionales puede admitir garantizando que $P_e \leq 10^{-5}$?
 	
 	\textsc{NOTA:} 
 	\begin{displaymath}
 			P_e = Q \left ( \frac{1}{\sqrt{\frac{M-1}{3P_g} + \frac{N_0}{2E_b}}} \right )
 	\end{displaymath}
+	
 	}{
 		54 usuarios en total
 	}{}{}
