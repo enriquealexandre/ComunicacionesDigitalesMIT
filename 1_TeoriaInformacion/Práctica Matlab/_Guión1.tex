@@ -7,15 +7,15 @@
 %
 \begin{document}
 
-\titulacion{Optativa GIEC y GIT}
+\titulacion{Máster en Ingeniería de Telecomunicación}
 \departamento{Teoría de la Señal y Comunicaciones}
 \asignatura{Comunicaciones Digitales}{}
-\curso{2021/2022}
+\curso{2022/2023}
 
 \maketitle
 
 \begin{abstract}
-Comenzaremos esta práctica repasando el concepto de entropía, para a continuación ver dos ejemplos de codificadores de fuente, como son los códigos Huffman y los códigos LZW (Lempel-Ziv-Welch). Se verán asimismo dos ejemplos adiconales de codificación fuente aplicada a los casos particulares de ficheros de audio y de imagen. 
+Comenzaremos esta práctica repasando el concepto de entropía, para a continuación ver dos ejemplos de codificadores de fuente, como son los códigos Huffman y los códigos LZW (Lempel-Ziv-Welch). 
 \end{abstract}
 
 %%%%%%%%%%%%%%%%%%%%%%
@@ -29,6 +29,7 @@ En primer lugar debemos desarrollar las siguientes funciones en Matlab:
 		\texttt{function H = entropia(p)}
 	\item Generar una función que, a partir de un vector de probabilidades p de una determinada fuente de información, calcule el código Huffman correspondiente.\\
 		\texttt{function codigo = huffman(p)}\\
+		Como alternativa, se puede utilizar la función \texttt{huffmandict} de Matlab. Se necesitan dos parámetros: los símbolos a transmitir, que en nuestro caso pueden ser directamente \texttt{1:6}, y las probabilidades de cada símbolo.
 	Podéis comprobar el funcionamiento de las funciones creadas considerando una fuente con 6 símbolos posibles con probabilidades:
 		\texttt{p = [0,1, 0,3, 0,05, 0,09, 0,21, 0,25]}
 		La entropía de esta fuente es de $2,3549$ bits por símbolo de fuente, la longitud media de las palabras del código Huffman es de $2,38$ bits, y la eficiencia $0,9895$.
@@ -99,7 +100,7 @@ Calcular la eficiencia de este código. ¿Qué debe ocurrir para que un código 
 
 	\item Calcular la entropía del alfabeto español con los datos dados.
 	\item Obtener el código Huffman correspondiente a las letras del español, calculando la longitud media de palabra, la tasa de compresión y la eficiencia.
-	\item Hacer lo mismo que en el apartado anterior, pero suponiendo ahora que las letras se van a agrupar de dos en dos. Supondremos que la fuente de información no tiene memoria, de forma que la probabilidad de aparición de un par de letras es igual al producto de las probabilidades individuales.
+	\item ¿Qué sucedería si suponemos ahora que las letras se van a agrupar de dos en dos?. Supondremos que la fuente de información no tiene memoria, de forma que la probabilidad de aparición de un par de letras es igual al producto de las probabilidades individuales.
 	\item Codificar, utilizando el algoritmo LZW, la cadena de texto mensaje incluida en el archivo \emph{Datos.mat}. Obtener, como antes, la longitud media de palabra, la tasa de compresión y la eficiencia obtenidas.
 	\item Decodificar el mensaje decodificado, comprobando que se obtiene de nuevo el mensaje original.
 \end{itemize}
@@ -110,7 +111,7 @@ Calcular la eficiencia de este código. ¿Qué debe ocurrir para que un código 
 
 \section{Pistas}
 \begin{itemize}
-	\item Para la codificación Huffman, es muy cómodo trabajar con números enteros, y en el último momento traducirlos a binario con la función \texttt{dec2bin}. Añadir un 0 a la derecha de un número binario no es más que multiplicarlo por dos en decimal, y añadir un 1, multiplicar por 2 y sumar 1.
+	\item Si os animáis a intentar programar el codificador Huffman, es muy cómodo trabajar con números enteros, y en el último momento traducirlos a binario con la función \texttt{dec2bin}. Añadir un 0 a la derecha de un número binario no es más que multiplicarlo por dos en decimal, y añadir un 1, multiplicar por 2 y sumar 1.
 	\item El diccionario del codificador LZW os lo paso en formato de \emph{cell array} porque creo que es lo más cómodo, ya que cada entrada del diccionario puede tener una longitud distinta.
 	\item El comando \texttt{strcmp(cadena,diccionario)} resulta muy útil para localizar si una determinada cadena existe en el diccionario, y dónde se encuentra.
 	\item Para el caso de la codificación del texto por pares de caracteres es útil tener en cuenta la función \texttt{kron}.
